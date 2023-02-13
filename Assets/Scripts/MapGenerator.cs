@@ -191,6 +191,6 @@ public class MapGenerator : MonoBehaviour
             Destroy(celdas[i].gameObject);
         }
 
-
+        puntuacion = 0;
     }
 }
