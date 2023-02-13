@@ -17,7 +17,7 @@ public class Celda : MonoBehaviour
 
     private void Update()
     {
-        if(MapGenerator.gen.hasPerdido == true)
+        if(MapGenerator.gen.hasPerdido == true || MapGenerator.gen.puntuacion == (MapGenerator.gen.witdth * MapGenerator.gen.height) - MapGenerator.gen.bombsNumber)
         {
             GameObject[] celdas = GameObject.FindGameObjectsWithTag("Celda");
             for (int i = celdas.Length - 1; i >= 0; i--)
