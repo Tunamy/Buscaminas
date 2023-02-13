@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -78,6 +80,16 @@ public class MapGenerator : MonoBehaviour
         witdth = wth;
         height = hei;
         bombsNumber = bomb;
+
+        if(witdth > 9)
+            witdth = 9;
+
+        if (height > 9)
+            height = 9;
+
+        if (bombsNumber > witdth * height)
+            bombsNumber = witdth * height - 1;
+
 
         map = new GameObject[witdth][]; //hace las celdas de ancho
 
@@ -169,5 +181,16 @@ public class MapGenerator : MonoBehaviour
     public void ReiniciarNivel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Restar()
+    {
+        GameObject[] celdas = GameObject.FindGameObjectsWithTag("Celda");
+        for (int i = celdas.Length - 1; i >= 0; i--)
+        {
+            Destroy(celdas[i].gameObject);
+        }
+
+
     }
 }

@@ -14,7 +14,23 @@ public class Celda : MonoBehaviour
 
     bool pulsada = true;
     public GameObject bomba;
-    
+
+    private void Update()
+    {
+        if(MapGenerator.gen.hasPerdido == true)
+        {
+            GameObject[] celdas = GameObject.FindGameObjectsWithTag("Celda");
+            for (int i = celdas.Length - 1; i >= 0; i--)
+            {
+                if (celdas[i].GetComponent<Celda>().bomb == true)
+                {
+                    celdas[i].GetComponent<SpriteRenderer>().color = Color.red;
+                    celdas[i].transform.GetChild(1).gameObject.SetActive(true);
+                }
+
+            }
+        }
+    }
 
     private void OnMouseDown()
     {
